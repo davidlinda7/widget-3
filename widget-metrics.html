@@ -1,1 +1,43 @@
-<!-- Metrics widget placeholder -->
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Key Metrics</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-transparent text-gray-900">
+  <main class="w-full p-4">
+    <section class="grid grid-cols-1 md:grid-cols-3 gap-4">
+      <div class="rounded-2xl border bg-white shadow p-4">
+        <h3 class="font-semibold">Missed Calls Today</h3>
+        <p id="missed" class="text-3xl font-bold mt-2">12</p>
+        <p class="text-sm text-gray-500">Automatically followed up by AI</p>
+      </div>
+      <div class="rounded-2xl border bg-white shadow p-4">
+        <h3 class="font-semibold">Text-Back Conversions</h3>
+        <p id="conv" class="text-3xl font-bold mt-2">5</p>
+        <p class="text-sm text-gray-500">Leads re-engaged within minutes</p>
+      </div>
+      <div class="rounded-2xl border bg-white shadow p-4">
+        <h3 class="font-semibold">Calls Saved This Week</h3>
+        <p id="saved" class="text-3xl font-bold mt-2 text-emerald-600">36</p>
+        <div class="w-full h-2 rounded bg-gray-200 overflow-hidden mt-3">
+          <div id="goal" class="h-2 bg-emerald-500" style="width:72%"></div>
+        </div>
+        <p id="goal_sub" class="text-xs text-gray-500 mt-1">72% of weekly goal</p>
+      </div>
+    </section>
+  </main>
+
+  <script>
+    const p = new URLSearchParams(location.search);
+    const m = Number(p.get('missed') || 12), c = Number(p.get('conv') || 5), s = Number(p.get('saved') || 36), g = Number(p.get('goal') || 72);
+    document.getElementById('missed').textContent = m;
+    document.getElementById('conv').textContent = c;
+    document.getElementById('saved').textContent = s;
+    document.getElementById('goal').style.width = g + '%';
+    document.getElementById('goal_sub').textContent = g + '% of weekly goal';
+  </script>
+</body>
+</html>
